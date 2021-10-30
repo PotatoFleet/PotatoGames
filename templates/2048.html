@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>PotatoGames - 2048</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/2048.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="game-title">2048</div>
+        <div class="game">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/2048.js')}}"></script>
+{% endblock %}
