@@ -27,7 +27,7 @@ class Number {
   async slideLeft() {
     while (
       this.column > 0 &&
-      slots[this.row + this.column - 1].children.length == 0
+      slots[this.row * 4 + this.column - 1].children.length == 0
     ) {
       for (let i = 0; i < this.numberDiv.offsetWidth; i += 10) {
         this.numberDiv.style.transform = `translateX(-${i}px)`;
@@ -37,7 +37,9 @@ class Number {
       slots[this.slot].removeChild(this.numberDiv);
 
       this.slot--;
+      console.log(this.column);
       this.column--;
+      console.log(this.column);
 
       let number = document.createElement("div");
       number.classList.add("number");
@@ -47,12 +49,13 @@ class Number {
 
       slots[this.slot].appendChild(this.numberDiv);
     }
+    console.log('---');
   }
 
   async slideRight() {
     while (
       this.column < 3 &&
-      slots[this.row + this.column + 1].children.length == 0
+      slots[this.row * 4 + this.column + 1].children.length == 0
     ) {
       for (let i = 0; i < this.numberDiv.offsetWidth; i += 10) {
         this.numberDiv.style.transform = `translateX(${i}px)`;
@@ -77,7 +80,7 @@ class Number {
   async slideUp() {
     while (
       this.row > 0 &&
-      slots[this.row - 1 + this.column].children.length == 0
+      slots[(this.row - 1) * 4 + this.column].children.length == 0
     ) {
       for (let i = 0; i < this.numberDiv.offsetWidth; i += 10) {
         this.numberDiv.style.transform = `translateY(-${i}px)`;
@@ -102,7 +105,7 @@ class Number {
   async slideDown() {
     while (
       this.row < 3 &&
-      slots[this.row + 1 + this.column].children.length == 0
+      slots[(this.row + 1) * 4 + this.column].children.length == 0
     ) {
       for (let i = 0; i < this.numberDiv.offsetWidth; i += 10) {
         this.numberDiv.style.transform = `translateY(${i}px)`;
@@ -131,23 +134,31 @@ new Number(3, 3, 2);
 document.addEventListener("keydown", (e) => {
   switch (e.keyCode) {
     case 37:
-      for (const number of Number.numbers) {
-        number.slideLeft();
+      for (let i = 0; i < Number.numbers.length; i++) {
+        for (const number of Number.numbers) {
+          number.slideLeft();
+        }
       }
       break;
     case 38:
-      for (const number of Number.numbers) {
-        number.slideUp();
+      for (let i = 0; i < Number.numbers.length; i++) {
+        for (const number of Number.numbers) {
+          number.slideUp();
+        }
       }
       break;
     case 39:
-      for (const number of Number.numbers) {
-        number.slideRight();
+      for (let i = 0; i < Number.numbers.length; i++) {
+        for (const number of Number.numbers) {
+          number.slideRight();
+        }
       }
       break;
     case 40:
-      for (const number of Number.numbers) {
-        number.slideDown();
+      for (let i = 0; i < Number.numbers.length; i++) {
+        for (const number of Number.numbers) {
+          number.slideDown();
+        }
       }
       break;
   }
